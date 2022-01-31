@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Zen Kaku Gothic New';
+    src: local('Zen Kaku Gothic New Regular'), local('Zen-Kaku-Gothic-New-Regular'),
+        url('ZenKakuGothicNew-Regular.woff2') format('woff2'),
+        url('ZenKakuGothicNew-Regular.woff') format('woff'),
+        url('ZenKakuGothicNew-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}

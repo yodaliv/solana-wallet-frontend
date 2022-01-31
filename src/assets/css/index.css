@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Zen Kaku Gothic Antique';
+  src: local('Zen Kaku Gothic Antique Medium'), local('Zen-Kaku-Gothic-Antique-Medium'),
+      url('../font/ZenKakuGothicAntique-Medium/ZenKakuGothicAntique-Medium.woff2') format('woff2'),
+      url('../font/ZenKakuGothicAntique-Medium/ZenKakuGothicAntique-Medium.woff') format('woff'),
+      url('../font/ZenKakuGothicAntique-Medium/ZenKakuGothicAntique-Medium.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Zen Kaku Gothic New';
+  src: local('Zen Kaku Gothic New Light'), local('Zen-Kaku-Gothic-New-Light'),
+      url('../font/ZenKakuGothicNew-Light/ZenKakuGothicNew-Light.woff2') format('woff2'),
+      url('../font/ZenKakuGothicNew-Light/ZenKakuGothicNew-Light.woff') format('woff'),
+      url('../font/ZenKakuGothicNew-Light/ZenKakuGothicNew-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Zen Kaku Gothic Regular';
+  src: local('Zen Kaku Gothic New Regular'), local('Zen-Kaku-Gothic-New-Regular'),
+      url('../font/ZenKakuGothicNew-Regular/ZenKakuGothicNew-Regular.woff2') format('woff2'),
+      url('../font/ZenKakuGothicNew-Regular/ZenKakuGothicNew-Regular.woff') format('woff'),
+      url('../font/ZenKakuGothicNew-Regular/ZenKakuGothicNew-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system,'Zen Kaku Gothic New', BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: black;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+  

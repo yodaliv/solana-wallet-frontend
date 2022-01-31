@@ -1,0 +1,66 @@
+.Main {
+    width: 100%;
+    background-color: black;
+    color:#4abdd0;
+    margin: 0 auto;
+}
+.logo {
+    font-size: 40px;
+    font-family: 'Zen Kaku Gothic New';
+}
+.header_button {
+    border-radius: 50px !important;
+    background-color:#4abdd0 !important;
+    color:black !important;
+    font-size: 18px !important;
+    font-family: 'Zen Kaku Gothic Antique' !important;
+}
+.logo_img {
+    width: 60%;
+}
+.content .content_title p{
+    font-size: 31px;
+    font-family: 'Zen Kaku Gothic Antique';
+}
+.content_button{
+    min-width: 170px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 350px !important;
+    border-radius: 50px !important;
+    background-color:#4abdd0 !important;
+    color:black !important;
+    padding:5px 0px 5px 0px !important;
+    font-size: 19px !important;
+    font-family: 'Zen Kaku Gothic Antique' !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+.content_post{
+    margin-bottom: 0;
+}
+.post_section {
+    margin-left: 150px;
+    margin-right: 150px;
+}
+.content_post h2 {
+    font-size: 26px;
+    text-align: center;
+    font-family: 'Zen Kaku Gothic Antique';
+}
+.content-desc h2 {
+    font-family: 'Zen Kaku Gothic Antique';
+    font-size: 26px;
+}
+.footer h2 {
+    font-family: 'Zen Kaku Gothic Antique';
+    font-size: 26px;
+}
+.footer .twitterIcon{
+    width: 80px !important;
+    height: 80px !important;
+}
+.footer .discordIcon{
+    width: 80px !important;
+    height: 80px !important;
+}
