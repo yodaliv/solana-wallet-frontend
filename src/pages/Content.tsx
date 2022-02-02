@@ -1,5 +1,4 @@
 import React, {useEffect, useState, FC, useCallback, useMemo} from 'react';
-import ContentLogo from '../assets/img/banner.png';
 import { WalletMultiButton, WalletDisconnectButton } from '@solana/wallet-adapter-react-ui';
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
 import axios from "axios";
@@ -12,26 +11,34 @@ const Content = () => {
     const [isValid, setIsValid] = useState(false);
 
     useEffect(() => {
-        axios.post('http://localhost:8080/api/getRandomMessage').then((res) => {
+        axios.post(`${config.API_BASE_URL}getRandomMessage`).then((res: any) => {
             setRandomMessage(res.data.data);
-        }).catch(err => {
+        }).catch((err : any) => {
 
         })
     }, [])
     useEffect(() => {
-        if(signMessage && publicKey)
-        {
-            const Verify = async() => {
-                const signature = await signMessage(randomMessage as any);
-                axios.post('http://localhost:8080/api/verify', { randomMessage: randomMessage, signature: signature, publicKey: publicKey}).then((res) =>{
+        if(!publicKey){
+            setIsValid(false);
+        }
+        
+        Verify();
+    },[publicKey, signMessage])
+
+    const Verify = async () => {
+        if (publicKey && signMessage) {
+            signMessage(randomMessage as any).then(res => {
+                console.log(11, res, randomMessage, publicKey, connection)
+                axios.post(`${config.API_BASE_URL}verify`, { randomMessage: randomMessage, signature: res, publicKey: publicKey }).then((res) =>{
+                    console.log(333)    
                     setIsValid(res.data.result);
                 }).catch(err =>{
-
+                    console.log(444, err)    
+        
                 })
-            }
-            Verify();
+            }).catch(err => console.log())
         }
-    },[publicKey])
+    }
 
     const renderButton = () => {
         if(!publicKey) {
@@ -53,7 +60,7 @@ const Content = () => {
 
         <div className="content">
             <div className="flex content_logo items-center justify-center">
-                <img className='logo_img' src={ContentLogo} />
+                <img className='logo_img' src={require('../assets/img/banner.png')} />
             </div>
             <div className="flex content_title items-center justify-center">
                 <p>Discover the new way to access exclusive content in the metaverse.</p>
@@ -132,7 +139,7 @@ const Content = () => {
     ) : (
         <div className="content">
             <div className="flex content_logo items-center justify-center">
-                <img className='logo_img' src={ContentLogo} />
+                <img className='logo_img' src={require('../assets/img/banner.png')} />
             </div>
             <div className="flex content_title items-center justify-center">
                 <p>Discover the new way to access exclusive content in the metaverse.</p>

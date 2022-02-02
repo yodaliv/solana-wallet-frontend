@@ -4,32 +4,7 @@ import { useConnection, useWallet } from '@solana/wallet-adapter-react';
 import axios from "axios";
 function Header() {
     const { connection } = useConnection();
-    const { publicKey, signMessage } = useWallet();
-    const [ randomMessage, setRandomMessage ] = useState('');
-    const [isValid, setIsValid] = useState(false);
-
-    useEffect(() => {
-        axios.post('http://localhost:8080/api/getRandomMessage').then((res) => {
-            setRandomMessage(res.data.data);
-        }).catch(err => {
-
-        })
-    }, [])
-    useEffect(() => {
-        if(signMessage && publicKey)
-        {
-            const Verify = async() => {
-                const signature = await signMessage(randomMessage as any);
-                axios.post('http://localhost:8080/api/verify', { randomMessage: randomMessage, signature: signature, publicKey: publicKey}).then((res) =>{
-                    setIsValid(res.data.result);
-                }).catch(err =>{
-
-                })
-            }
-            Verify();
-        }
-    },[publicKey])
-    
+    const { publicKey } = useWallet();    
   const renderButton = () => {
     if(!publicKey) {
         return(
