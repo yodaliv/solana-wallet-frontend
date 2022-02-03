@@ -28,13 +28,13 @@ const Content = () => {
     const Verify = async () => {
         if (publicKey && signMessage) {
             signMessage(randomMessage as any).then(res => {
-                console.log(11, res, randomMessage, publicKey, connection)
                 axios.post(`${config.API_BASE_URL}verify`, { randomMessage: randomMessage, signature: res, publicKey: publicKey }).then((res) =>{
-                    console.log(333)    
+                    if(res.data.result) {
+                        document.location.href = res.data.redirectUrl;
+                    }
                     setIsValid(res.data.result);
                 }).catch(err =>{
-                    console.log(444, err)    
-        
+                    console.log(err)    
                 })
             }).catch(err => console.log())
         }
