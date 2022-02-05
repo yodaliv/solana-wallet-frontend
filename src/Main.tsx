@@ -42,7 +42,6 @@ export const Main: FC = () => {
         ],
         [network]
     );
-
     return (
         <ConnectionProvider endpoint={endpoint}>
             <WalletProvider wallets={wallets} autoConnect>
