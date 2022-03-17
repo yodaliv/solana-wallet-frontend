@@ -3,11 +3,11 @@ import { WalletMultiButton, WalletDisconnectButton } from '@solana/wallet-adapte
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
 import * as $ from 'jquery';
 import axios from "axios";
+
 import config  from "../Config";
 import AlertItem from "../item/AlertItem";
 
 const Content = () => {
-    const { connection } = useConnection();
     const { publicKey, signMessage } = useWallet();
     const [ randomMessage, setRandomMessage ] = useState('');
     const [isValid, setIsValid] = useState(false);
@@ -18,14 +18,13 @@ const Content = () => {
         axios.post(`${config.API_BASE_URL}getRandomMessage`).then((res: any) => {
             setRandomMessage(res.data.data);
         }).catch((err : any) => {
-
         })
     }, [])
+
     useEffect(() => {
         if(!publicKey){
             setIsValid(false);
         }
-        
         Verify();
     },[publicKey, signMessage])
 
@@ -33,27 +32,19 @@ const Content = () => {
         if (publicKey && signMessage) {
             signMessage(randomMessage as any).then(res => {
                 axios.post(`${config.API_BASE_URL}verify`, { randomMessage: randomMessage, signature: res, publicKey: publicKey }).then((res) =>{
-                    if(res.data.result) {
-                        //document.location.href = res.data.redirectUrl;
+                    if (res.data.result) {
                         setMessage(res.data.message);
                         setStatus('success');
-                        // var formData = new FormData();
-                        // formData.append("status", 'success');
-                        // var request = new XMLHttpRequest();
-                        // request.open("POST", "https://alientriptales.com/aliennews/");
-                        // request.send(formData);
                         setIsValid(true);
                         $("#status").val("success");
                         $("#actionForm").submit();
                     }
-                    else{
+                    else {
                         setMessage(res.data.message);
                         setStatus('error');
                     }
-                }).catch(err =>{
-                    console.log(err) 
-                })
-            }).catch(err => console.log())
+                }).catch(err => console.log(err))
+            }).catch(err => console.log(err))
         }
     }
     const showMessage = () => {
@@ -62,13 +53,13 @@ const Content = () => {
         )
     }
     const renderButton = () => {
-        if(!publicKey) {
+        if (!publicKey) {
             return(
                 <div className="content-button">
                     <WalletMultiButton className='content_button'>CONNECT WALLET</WalletMultiButton>
                 </div>
             )
-        }else {
+        } else {
             return(
                 <div className="content-button">
                     <WalletDisconnectButton className='content_button' />
@@ -78,7 +69,7 @@ const Content = () => {
     }
     
     return isValid ? (
-        <form action="https://alientriptales.com/aliennews/" method="POST" name="actionForm" id="actionForm" className="actionForm" style={{display: 'none'}}>
+        <form action={config.SERVER_URL} method="POST" name="actionForm" id="actionForm" className="actionForm" style={{display: 'none'}}>
             <input type="hidden" name="status" id="status" className='status' />
             <div className="content">
                 <div className="flex content_logo items-center justify-center">

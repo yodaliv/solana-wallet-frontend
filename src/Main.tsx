@@ -10,10 +10,9 @@ import {
     SolletWalletAdapter,
     TorusWalletAdapter,
 } from '@solana/wallet-adapter-wallets';
-import {
-    WalletModalProvider,
-} from '@solana/wallet-adapter-react-ui';
+import { WalletModalProvider } from '@solana/wallet-adapter-react-ui';
 import { clusterApiUrl } from '@solana/web3.js';
+
 import Header from './pages/Header';
 import Content from './pages/Content';
 import Footer from './pages/Footer';
@@ -46,11 +45,11 @@ export const Main: FC = () => {
         <ConnectionProvider endpoint={endpoint}>
             <WalletProvider wallets={wallets} autoConnect>
                 <WalletModalProvider>
-                <div className="Main w-full container">
-                    <Header />
-                    <Content />
-                    <Footer />
-                </div>
+                    <div className="Main w-full container">
+                        <Header />
+                        <Content />
+                        <Footer />
+                    </div>
                     { /* Your app's components go here, nested within the context providers. */ }
                 </WalletModalProvider>
             </WalletProvider>

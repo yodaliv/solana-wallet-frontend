@@ -18,11 +18,11 @@
 .logo_img {
     width: 60%;
 }
-.content .content_title p{
+.content .content_title p {
     font-size: 31px;
     font-family: 'Zen Kaku Gothic Antique';
 }
-.content_button{
+.content_button {
     min-width: 170px !important;
     margin-left: auto !important;
     margin-right: auto !important;
@@ -36,7 +36,7 @@
     display: flex !important;
     justify-content: center !important;
 }
-.content_post{
+.content_post {
     margin-bottom: 0;
 }
 .post_section {
@@ -56,11 +56,11 @@
     font-family: 'Zen Kaku Gothic Antique';
     font-size: 26px;
 }
-.footer .twitterIcon{
+.footer .twitterIcon {
     width: 80px !important;
     height: 80px !important;
 }
-.footer .discordIcon{
+.footer .discordIcon {
     width: 80px !important;
     height: 80px !important;
 }
