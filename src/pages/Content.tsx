@@ -1,8 +1,8 @@
 import React, {useEffect, useState } from 'react';
 import { WalletMultiButton, WalletDisconnectButton } from '@solana/wallet-adapter-react-ui';
-import { useConnection, useWallet } from '@solana/wallet-adapter-react';
+import { useWallet } from '@solana/wallet-adapter-react';
 import * as $ from 'jquery';
-import axios from "axios";
+import axios from 'axios';
 
 import config  from "../Config";
 import AlertItem from "../item/AlertItem";
@@ -10,29 +10,29 @@ import AlertItem from "../item/AlertItem";
 const Content = () => {
     const { publicKey, signMessage } = useWallet();
     const [ randomMessage, setRandomMessage ] = useState('');
-    const [isValid, setIsValid] = useState(false);
-    const [message, setMessage] = useState('');
-    const [status, setStatus] = useState('error');
+    const [ isValid, setIsValid ] = useState(false);
+    const [ message, setMessage ] = useState('');
+    const [ status, setStatus ] = useState('error');
 
     useEffect(() => {
         axios.post(`${config.API_BASE_URL}getRandomMessage`).then((res: any) => {
             setRandomMessage(res.data.data);
         }).catch((err : any) => {
         })
-    }, [])
+    }, []);
 
     useEffect(() => {
         if(!publicKey){
             setIsValid(false);
         }
         Verify();
-    },[publicKey, signMessage])
+    },[publicKey, signMessage]);
 
     const Verify = async () => {
-        if (publicKey && signMessage) {
+        if ( publicKey && signMessage ) {
             signMessage(randomMessage as any).then(res => {
                 axios.post(`${config.API_BASE_URL}verify`, { randomMessage: randomMessage, signature: res, publicKey: publicKey }).then((res) =>{
-                    if (res.data.result) {
+                    if ( res.data.result ) {
                         setMessage(res.data.message);
                         setStatus('success');
                         setIsValid(true);

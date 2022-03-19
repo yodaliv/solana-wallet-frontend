@@ -17,7 +17,7 @@ const AlertItem = (props: any) => {
     const messageContent = props.message;
     const status = props.status;
     const showAlert = () => {
-      if(messageContent === '' || messageContent === 'undefined' || messageContent === undefined ) {
+      if ( messageContent === '' || messageContent === 'undefined' || messageContent === undefined ) {
         return (
           <></>
         )

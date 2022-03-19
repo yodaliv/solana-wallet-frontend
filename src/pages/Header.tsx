@@ -1,13 +1,12 @@
 import React from 'react';
 import { WalletMultiButton, WalletDisconnectButton } from '@solana/wallet-adapter-react-ui';
-import { useConnection, useWallet } from '@solana/wallet-adapter-react';
+import { useWallet } from '@solana/wallet-adapter-react';
 
 function Header() {
-    const { connection } = useConnection();
     const { publicKey } = useWallet();
         
     const renderButton = () => {
-        if (!publicKey) {
+        if ( !publicKey ) {
             return(
                 <div className="header-button">
                     <WalletMultiButton className='header_button'>CONNECT WALLET</WalletMultiButton>
